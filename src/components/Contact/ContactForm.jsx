@@ -2,11 +2,11 @@ import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import axios from 'axios';
 
 const Contact = () => {
   const validationSchema = Yup.object().shape({
-    name: Yup.string()
-    .required("Name is required"),
+    name: Yup.string().required("Name is required"),
     email: Yup.string().email("Invalid email address").required("Email is required"),
     phone: Yup.string()
       .matches(/^[0-9]+$/, "Phone number must be only digits")
@@ -16,17 +16,23 @@ const Contact = () => {
   });
 
   return (
-    <Container className="mt-5" style={{ marginTop:"90px" }}>
+    <Container className="mt-5" style={{ marginTop: "90px" }}>
       <h1 className="text-light">Contact Me</h1>
       <Formik
         initialValues={{ name: "", email: "", phone: "", message: "" }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          setTimeout(() => {
-            console.log(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-            resetForm();
-          }, 400);
+          console.log('Form submitted with values:', values);
+          axios.post('http://localhost:5000/api/contact', values)
+            .then(response => {
+              console.log(response.data);
+              setSubmitting(false);
+              resetForm();
+            })
+            .catch(error => {
+              console.error(error);
+              setSubmitting(false);
+            });
         }}
       >
         {({
@@ -36,6 +42,7 @@ const Contact = () => {
           values,
           touched,
           isValid,
+          isSubmitting,
           errors,
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
@@ -111,10 +118,11 @@ const Contact = () => {
                   <Form.Control.Feedback type="invalid">
                     {errors.message}
                   </Form.Control.Feedback>
-                </Form.Group>
+               
+                  </Form.Group>
               </Col>
             </Row>
-            <Button variant="primary" type="submit" disabled={!isValid}>
+            <Button variant="primary" type="submit" disabled={!isValid || isSubmitting}>
               Submit
             </Button>
           </Form>

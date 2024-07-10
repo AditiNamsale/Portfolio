@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { MdContactPhone } from "react-icons/md";
-
+import { ImBlog } from "react-icons/im";
 import { CgGitFork } from "react-icons/cg";
 import {
   AiFillStar,
@@ -104,6 +104,15 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
+            <Nav.Item>
+              <Nav.Link
+                href="https://soumyajitblogs.vercel.app/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <ImBlog style={{ marginBottom: "2px" }} /> Blog
+              </Nav.Link>
+            </Nav.Item>
 
             <Nav.Item className="fork-btn">
               <Button

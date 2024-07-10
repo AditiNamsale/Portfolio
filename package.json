@@ -25,17 +25,14 @@
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
     "react-tsparticles": "^1.42.2",
-    "serve": "^11.3.2",
     "typewriter-effect": "^2.18.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node server.js",
-    "client": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "serve": "serve -s build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

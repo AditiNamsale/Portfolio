@@ -1,0 +1,50 @@
+/* Container that holds the blog cards */
+.blog-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Individual blog cards */
+.blog-card {
+  background-color: #444 !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  padding: 20px !important;
+  margin: 10px auto !important; /* Center horizontally */
+  width: 80% !important; /* Cover 80% of the page width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  text-align: left !important;
+  min-height: 150px !important;
+  display: block !important;
+  height: auto !important; /* Ensure height adjusts to content */
+  overflow: visible !important; /* Ensure overflow is visible */
+}
+
+.blog-card p {
+  white-space: normal !important;
+  overflow: visible !important;
+}
+
+.blog-card p {
+  white-space: normal;
+  overflow: visible;
+}
+
+
+.blog-card h3 {
+  margin-top: 0;
+}
+
+.blog-card p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.blog-card small {
+  display: block;
+  margin-top: 10px;
+  color: #bbb;
+}
